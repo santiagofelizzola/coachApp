@@ -1,13 +1,15 @@
 import React from 'react'
+import Button from 'react-bootstrap/Button'
 import { NavLink } from 'react-router-dom'
 
 const Navigation = () => {
   return (
     <div>
-        <NavLink to='/dash'>Home</NavLink>
-        {/* <NavLink to='/season'>Season Schedule</NavLink> */}
-        <NavLink to='/roster'>Roster</NavLink>
-        {/* <NavLink to='/weather'>Weather</NavLink> */}
+        <Button className='navBtn'><NavLink className={'navLinks'} to='/dash'>Home</NavLink></Button>
+        {/* <Button className='navBtn'><NavLink className={'navLinks'} to='/season'>Season Schedule</NavLink></Button> */}
+        <Button className='navBtn'><NavLink className={'navLinks'} to='/roster'>Roster</NavLink></Button>
+        {/* <Button className='navBtn'><NavLink className={'navLinks'} to='/weather'>Weather</NavLink></Button> */}
+        
     </div>
   )
 }

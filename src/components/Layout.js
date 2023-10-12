@@ -4,15 +4,15 @@ import Season from "./Season";
 import Roster from "./Roster";
 import Weather from "./Weather";
 import { Route, Routes } from "react-router-dom";
+import ReactCalendar from "./ReactCalendar";
 
 
 
-const Dashboard = () => {
+const Layout = () => {
   return (
     <div>
       <Navigation />
 
-      <h1>Welcome back!</h1>
 
       <Routes>
         {/* <Route path="season" element= {<Season />} /> */}
@@ -20,10 +20,11 @@ const Dashboard = () => {
         <Route path="/weather" element= {<Weather />} />
         {/* <Route path="/drill" element= {<Session />} /> */}
       </Routes>
+      <ReactCalendar />
       
       <Weather />
     </div>
   );
 };
 
-export default Dashboard;
+export default Layout;

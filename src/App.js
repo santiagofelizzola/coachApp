@@ -1,13 +1,13 @@
 import React from 'react'
-import Dashboard from './components/Dashboard'
+import Layout from './components/Layout'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/App.css'
 
 const App = () => {
   return (
-    <div>
+    <div id='app'>
       {/* <Registration /> */}
-      <Dashboard />
+      <Layout />
     </div>
   )
 }
