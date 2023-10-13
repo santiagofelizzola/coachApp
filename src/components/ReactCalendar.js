@@ -49,15 +49,15 @@ const ReactCalendar = () => {
         onClickDay={handleShow}
         value={selectedDate}
       />
-      {/* <Button onClick={handleSubmit}>Click</Button>
+     <Button onClick={handleSubmit}>Click</Button>
       <Button variant="secondary" onClick={test}>
         Console
-      </Button>
+      </Button> {/*
 
       <p>{selectedDate.toString()}</p>
-      <p>{selectedDate.toDateString()}</p> */}
+      <p>{selectedDate.toDateString()}</p> 
 
-      {/* <Form onSubmit={handleSubmit}>
+       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="FormInput">
           <Form.Label>Label</Form.Label>
           <Form.Control
