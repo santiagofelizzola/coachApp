@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form_AddPlayer from './Form_AddPlayer';
 import Player from './Player';
+import ReactCalendar from './ReactCalendar';
 
 const RosterTable = () => {
 
@@ -17,13 +18,14 @@ const RosterTable = () => {
     console.log(players)
 
   return (
-    <div>
+    <div id='RosterPage'>
+        <div id='rosterTable-Full'>
         <div className='table-title'>
             <div className='table-title-text'>
                 <h1>Manage <b>Roster</b></h1>
             </div>
             <div className='table-title-btn'>
-                <Button className='btn btn-success' data-toggle='modal' onClick={handleShow}>Add Player</Button>
+                <Button className='addBtn btn btn-success' data-toggle='modal' onClick={handleShow}>Add Player</Button>
             </div>
         </div>
 
@@ -47,6 +49,9 @@ const RosterTable = () => {
                 ))}
             </tbody>
         </table>
+        </div>
+
+        <ReactCalendar />
 
 
         <Modal show={show} onHide={handleClose}>
@@ -54,7 +59,7 @@ const RosterTable = () => {
                 <Modal.Title>Add New Player</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form_AddPlayer />
+                <Form_AddPlayer close={handleClose} />
             </Modal.Body>
             <Modal.Footer>
                 <Button variant='secondary' onClick={handleClose}>Cancel</Button>

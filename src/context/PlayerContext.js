@@ -2,7 +2,9 @@ import React, { createContext, useState } from 'react'
 
 export const PlayerContext = createContext()
 
+
 const PlayerContextProvider = ({children}) => {
+
 
     const [players, setPlayers] = useState([
         { id:0, firstName: "Aimee", lastName: "Babb", goals: 3, assists: 3, position: "CM" },
@@ -15,8 +17,19 @@ const PlayerContextProvider = ({children}) => {
       ]);
 
       const addPlayer = (firstName, lastName, position, goals, assists, notes) => {
-        setPlayers([...players, {firstName, lastName, goals, assists, position, notes}])
+        const newPlayerID = generateNewPlayerID(players)
+        setPlayers([...players, {id: newPlayerID, firstName, lastName, goals, assists, position, notes}])
       }
+
+      const generateNewPlayerID = (players) => {
+        // Find the highest gameID in the current list of players
+        const highestPlayerID = players.reduce((maxID, player) => {
+          return player.playerID > maxID ? player.playerID : maxID;
+        }, 0);
+      
+        // Increment the highest playerID by 1 to generate a new unique playerID
+        return highestPlayerID + 1;
+      };
 
       const deletePlayer = (id) => {
         console.log('Deleted Player')

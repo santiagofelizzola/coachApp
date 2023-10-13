@@ -3,21 +3,27 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { GameContext } from "../context/GameContext";
 
-const Form_AddGame = () => {
+const Form_AddGame = ({close}) => {
   const { addGame } = useContext(GameContext);
 
   const [newGame, setNewGame] = useState({
     date: "",
-    us: "",
-    them: "",
+    opponent: "",
+    home: "",
+    away: "",
+    result: "",
     notes: "",
   });
 
-  const {date, us, them, notes} = newGame;
+
+  const {date, home, away, result, opponent, notes} = newGame;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addGame(date, us, them, notes)
+    newGame.result = `${newGame.home}-${newGame.away}`
+    console.log(newGame.result)
+    addGame(date, opponent, result, home, away, notes);
+    close();
   };
 
   const onInputChange = (e) => {
@@ -36,20 +42,28 @@ const Form_AddGame = () => {
             value={date}
             onChange={(e) => onInputChange(e)}
           ></Form.Control>
-          <Form.Label>Us</Form.Label>
+          <Form.Label>Opponent</Form.Label>
           <Form.Control
             type="text"
-            placeholder="us"
-            name="us"
-            value={us}
+            placeholder="Opponent"
+            name="opponent"
+            value={opponent}
             onChange={(e) => onInputChange(e)}
           ></Form.Control>
-          <Form.Label>Them</Form.Label>
+          <Form.Label>Home</Form.Label>
           <Form.Control
             type="text"
-            placeholder="them"
-            name="them"
-            value={them}
+            placeholder="home"
+            name="home"
+            value={home}
+            onChange={(e) => onInputChange(e)}
+          ></Form.Control>
+          <Form.Label>Away</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="away"
+            name="away"
+            value={away}
             onChange={(e) => onInputChange(e)}
           ></Form.Control>
           <Form.Label>Notes</Form.Label>

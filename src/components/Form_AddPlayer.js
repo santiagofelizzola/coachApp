@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { PlayerContext } from "../context/PlayerContext";
 
-const Form_AddPlayer = () => {
+const Form_AddPlayer = ({close}) => {
   const { addPlayer } = useContext(PlayerContext);
 
   const [newPlayer, setNewPlayer] = useState({
@@ -19,7 +19,9 @@ const Form_AddPlayer = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addPlayer(firstName, lastName, position, goals, assists, notes)
+    console.log('Add player')
+    addPlayer(firstName, lastName, position, goals, assists, notes);
+    close()
   };
 
   const onInputChange = (e) => {

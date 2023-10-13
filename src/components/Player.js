@@ -35,7 +35,7 @@ const Player = ({ player }) => {
           <Modal.Title>Edit Player</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form_EditPlayer thePlayer={player} />
+          <Form_EditPlayer close={handleClose} thePlayer={player} />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="seconday" onClick={handleClose}>

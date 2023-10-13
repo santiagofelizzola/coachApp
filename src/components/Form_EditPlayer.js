@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { PlayerContext } from "../context/PlayerContext";
 
-const Form_EditPlayer = ({thePlayer}) => {
+const Form_EditPlayer = ({thePlayer, close}) => {
 
   const id = thePlayer.id;
 
@@ -20,7 +20,8 @@ const Form_EditPlayer = ({thePlayer}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updatePlayer(id, updatedPlayer)
+    updatePlayer(id, updatedPlayer);
+    close();
   }
 
 
@@ -80,7 +81,7 @@ const Form_EditPlayer = ({thePlayer}) => {
         </Form.Group>
 
         <Button variant="success" type="submit">
-          Edit Employee
+          Edit Player
         </Button>
       </Form>
     </div>

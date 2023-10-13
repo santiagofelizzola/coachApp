@@ -3,23 +3,29 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { GameContext } from "../context/GameContext";
 
-const Form_EditGame = ({theGame}) => {
+const Form_EditGame = ({theGame, close}) => {
 
-  const id = theGame.id;
+  const {gameID} = theGame;
 
   const [date, setDate] = useState(theGame.date);
-  const [us, setUs] = useState(theGame.us);
-  const [them, setThem] = useState(theGame.them);
-  const [notes, setNotes] = useState(theGame.notes)
+  const [opponent, setOpponent] = useState(theGame.opponent);
+  const [home, setHome] = useState(theGame.home);
+  const [away, setAway] = useState(theGame.away);
+  const [notes, setNotes] = useState(theGame.notes);
+  const [result] = useState(theGame.result)
+  
 
   const {updateGame} = useContext(GameContext);
-  const {formatDate} = useContext(GameContext)
+  const {formatDate} = useContext(GameContext);
 
-  const updatedGame = {date, us, them,notes};
+  const updatedGame = {gameID, date, opponent, home, away, result, notes};
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateGame(id, updatedGame)
+    updatedGame.result = `${updatedGame.home}-${updatedGame.away}`
+    console.log(updatedGame)
+    updateGame(gameID, updatedGame);
+    close();
   }
   
 
@@ -39,22 +45,31 @@ const Form_EditGame = ({theGame}) => {
             required
           ></Form.Control>
 
-          <Form.Label>Us</Form.Label>
+          <Form.Label>Opponent</Form.Label>
           <Form.Control
             type="text"
             placeholder="Last Name"
-            name="us"
-            value={us}
-            onChange={(e) => setUs(e.target.value)}
+            name="Opponent"
+            value={opponent}
+            onChange={(e) => setOpponent(e.target.value)}
           ></Form.Control>
 
-          <Form.Label>Them</Form.Label>
+          <Form.Label>Home</Form.Label>
           <Form.Control
             type="text"
-            placeholder="them"
-            name="them"
-            value={them}
-            onChange={(e) => setThem(e.target.value)}
+            placeholder="Home"
+            name="home"
+            value={home}
+            onChange={(e) => setHome(e.target.value)}
+          ></Form.Control>
+
+          <Form.Label>Away</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Away"
+            name="away"
+            value={away}
+            onChange={(e) => setAway(e.target.value)}
           ></Form.Control>
 
           <Form.Label>Notes</Form.Label>

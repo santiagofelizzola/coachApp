@@ -21,10 +21,11 @@ const Game = ({ game }) => {
   return (
     <>
       <td>{game.date}</td>
-      <td>{game.us}-{game.them}</td>
+      <td>{game.opponent}</td>
+      <td>{game.result}</td>
       <td>
-        <button onClick={handleShow} className="btn btn-act text-danger" data-toggle='modal' >edit</button>
-        <button onClick={() => deleteGame(game.id)} className="btn btn-act text-danger" data-toggle='modal' >delete</button>
+        <button onClick={handleShow} className="btn btn-act text-danger" data-toggle='modal' >Edit</button>
+        <button onClick={() => deleteGame(game.gameID)} className="btn btn-act text-danger" data-toggle='modal' >Delete</button>
       </td>
 
       <Modal show={show} onHide={handleClose}>
@@ -32,7 +33,7 @@ const Game = ({ game }) => {
           <Modal.Title>Edit Game</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form_EditGame theGame={game} />
+          <Form_EditGame close={handleClose} theGame={game} />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="seconday" onClick={handleClose}>
